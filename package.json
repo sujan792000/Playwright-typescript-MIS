@@ -1,0 +1,21 @@
+{
+  "name": "playwright-typescript-framework",
+  "version": "1.0.0",
+  "description": "Playwright TypeScript framework with Page Object Model, Allure reports, and Docker support",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:ui": "npx playwright test --ui",
+    "test:debug": "npx playwright test --debug",
+    "report": "allure generate ./allure-results -o ./allure-report --clean && allure open ./allure-report",
+    "report:generate": "allure generate ./allure-results -o ./allure-report --clean"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.10.0",
+    "allure-commandline": "^2.37.0",
+    "allure-playwright": "^3.6.0",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.7.0"
+  }
+}
