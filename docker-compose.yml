@@ -9,7 +9,7 @@ services:
     environment:
       - CI=1
       - NODE_ENV=development
-      - BASE_URL=${BASE_URL:-http://localhost:3000}
+      - BASE_URL=${{ secrets.BASE_URL }}
     volumes:
       - ./allure-results:/app/allure-results
     shm_size: '1gb'
