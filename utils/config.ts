@@ -1,6 +1,9 @@
 import * as dotenv from 'dotenv';
 
-dotenv.config();
+// Load local environment variables from .env only when not running in CI.
+if (!process.env.CI) {
+  dotenv.config();
+}
 
 export const config = {
   baseURL: process.env.BASE_URL || 'https://example.com',

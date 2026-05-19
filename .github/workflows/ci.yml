@@ -8,6 +8,8 @@ on:
 jobs:
   docker-playwright:
     runs-on: ubuntu-latest
+    env:
+      BASE_URL: ${{ secrets.BASE_URL }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,8 +20,6 @@ jobs:
       - name: Build and run Playwright tests in Docker
         run: |
           docker compose -f docker-compose.yml up --build --abort-on-container-exit --exit-code-from playwright-tests
-        env:
-          BASE_URL: ${{ secrets.BASE_URL }}
 
       - name: Tear down Docker Compose
         if: always()

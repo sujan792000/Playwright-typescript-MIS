@@ -2,8 +2,12 @@ import { defineConfig, devices } from '@playwright/test';
 import * as dotenv from 'dotenv';
 import { config } from './utils/config';
 
-// Load environment variables from .env file
-dotenv.config();
+// Load local environment variables from .env when running locally.
+if (!process.env.CI) {
+  dotenv.config();
+}
+
+const baseURL = process.env.BASE_URL || config.baseURL;
 
 export default defineConfig({
   testDir: './tests',
@@ -17,7 +21,7 @@ export default defineConfig({
     ['allure-playwright', { outputFolder: 'allure-results' }],
   ],
   use: {
-    baseURL: config.baseURL,
+    baseURL,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
