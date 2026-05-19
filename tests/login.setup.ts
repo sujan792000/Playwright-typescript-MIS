@@ -4,8 +4,8 @@ import { config } from '../utils/config';
 setup('authentication',async ({page}) => {
   const AUTH_FILE = '.auth/user.json';
   await page.goto(`${config.baseURL}/login`);
-  await page.fill('input[type="email"], input[type="text"]', config.username);
-  await page.fill('input[type="password"]', config.password);
+  await page.locator('[placeholder="Email"]').fill(config.username);
+  await page.locator('[placeholder="Password"]').fill(config.password);
   await Promise.all([
     page.waitForNavigation({ url: '**/' }),
     page.click('button[type="submit"]'),

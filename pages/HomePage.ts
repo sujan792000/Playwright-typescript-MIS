@@ -13,4 +13,12 @@ export class HomePage extends BasePage {
   async navigate(): Promise<void> {
     await this.goto('/');
   }
+
+    /**
+   * Click New Article link
+   */
+  async clickNewArticle(): Promise<void> {
+    await this.click(this.page.getByRole('link', { name: 'New Article' }));
+    await this.waitForPageLoad();
+  }
 }

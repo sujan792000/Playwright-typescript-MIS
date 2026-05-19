@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 import { config } from '../utils/config';
 
 /**
@@ -39,15 +39,15 @@ export class BasePage {
   /**
    * Enter text into an input field
    */
-  async fill(selector: string, text: string): Promise<void> {
-    await this.page.fill(selector, text);
+  async fill(locator: Locator, text: string): Promise<void> {
+    await locator.fill(text);
   }
 
   /**
    * Click an element
    */
-  async click(selector: string): Promise<void> {
-    await this.page.click(selector);
+  async click(locator: Locator): Promise<void> {
+    await locator.click();
   }     
   
 }

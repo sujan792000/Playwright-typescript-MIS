@@ -1,7 +1,6 @@
 import { test as base } from '@playwright/test';
-import { HomePage } from '../pages';
+import { HomePage, ArticlePage } from '../pages';
 import { config } from '../utils/config';
-import { LoginPage } from '../pages/LoginPage';
 import { FileUpload } from '../utils/FileUpload';
 
 /**
@@ -10,7 +9,7 @@ import { FileUpload } from '../utils/FileUpload';
  */
 export type TestOptions = {
   homePage: HomePage;
-  fileUpload: FileUpload;
+  articlePage: ArticlePage;
 }
 
 export const test = base.extend<TestOptions>({
@@ -19,9 +18,9 @@ export const test = base.extend<TestOptions>({
     await use(homePage);
   },
 
-  fileUpload: async ({ page }, use) => {
-    const fileUpload = new FileUpload(page);
-    await use(fileUpload);
+  articlePage: async ({ page }, use) => {
+    const articlePage = new ArticlePage(page);
+    await use(articlePage);
   }
 });
 
